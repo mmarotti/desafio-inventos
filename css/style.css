@@ -2,13 +2,14 @@
 
 1. Helpers
 2. Main
+3. Minions
 
 */
 
 /* 1. Helpers */
 
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+h1, h3, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -179,7 +180,119 @@ body, html{
 			padding-top: 20px;
 			height: 400px;
 		}
-
 	}
+}
 
+/* 3. Minions */
+
+#minions{
+	height: 500px;
+	width: 100%;
+}
+
+#minions .half-screen{
+	width:50%;
+	height:100%;
+	display: block;
+	transition: 0.5s;
+	background-color: #FFFFFF;
+}
+
+#minions #half-screen-left{
+	float: left;
+}
+
+#minions #half-screen-right{
+	float: right;
+}
+
+#minions #minions-info{
+	max-width: 1000px;
+	height: 500px;
+	display: block;
+	z-index: 1;
+	margin: 0 auto;
+	position: relative;
+	margin-top: 50px;
+}
+
+#minions #minions-info .minion-show{
+	width: 50%;
+	height: 500px;
+	transition: 0.5s;
+	position: absolute;
+}
+
+#minions #minions-info .minion-show .text{
+	margin-top: 80px;
+	width: 200px;
+	display: table;
+	color: #F2D05B;
+}
+
+#minions .minion-show img{
+	width: 200px;
+}
+
+#minions #minions-info .minion-show p{
+	width: 200px;
+	font-family: 'Rubik', sans-serif;
+	font-size: 22px;
+}
+
+#minions #minions-info .minion-show h3{
+	font-family: 'Fredoka One', cursive;
+	font-size: 30px;
+	margin-bottom: 20px;
+}
+
+#minions #minions-info #first-minion{
+	left: 0;
+}
+
+#minions #minions-info #second-minion{
+	right: 0;
+	text-align: right;
+}
+
+#minions #minions-info #first-minion .text{
+	float: left;
+}
+
+#minions #minions-info #second-minion .text{
+	float: right;
+}
+
+#minions #minions-info #first-minion img{
+	margin-top: 60px;
+	margin-right: 40px;
+	float: right;
+}
+
+#minions #minions-info #second-minion img{
+	margin-top: 140px;
+	margin-left: 40px;
+	float: left;
+}
+
+#minions #minions-info #second-minion p{
+	float: right;
+}
+
+h2{
+	font-family: 'Fredoka One';
+	font-size: 40px;
+	color: #5F5F5F;
+	letter-spacing: 2px;
+	font-weight: normal;
+	max-width: 1000px;
+	margin: 0 auto 50px auto;
+}
+
+#minions .half-screen.active{
+	background-color: #F2D05B;
+}
+
+#minions #minions-info .minion-show.active .text{
+	color: #FFFFFF;
 }
