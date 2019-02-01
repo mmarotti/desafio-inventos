@@ -1,0 +1,11 @@
+{
+  "body": "{\"client_name\":\"Antonio\",\"email\":\"teste2@email.com\",\"phone\":\"99205635\",\"minion\":\"9\"}",
+  "pathParameters": {
+    "id": "4d4e99e0-2665-11e9-aa41-bfa6b6faf6b6"
+  },
+  "requestContext": {
+    "identity": {
+      "cognitoIdentityId": "USER-SUB-1274"
+    }
+  }
+}
