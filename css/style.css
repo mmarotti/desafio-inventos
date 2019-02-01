@@ -328,7 +328,7 @@ h2{
 	 @media(max-width:550px){
 		 #minions{
 	 		height: 1800px;
-	 	}
+	 	 }
 
 		 #minions #minions-info .minion-show, #minions #minions-info{
 			 width: 300px;
@@ -473,5 +473,41 @@ h2{
 
 #contact .frame form .item.radio #minion-1-radio:checked ~ .minion-radio[for="minion-1-radio"], #contact .frame form .item.radio #minion-2-radio:checked ~ .minion-radio[for="minion-2-radio"]{
 	background-color: #F2D05B;
-	color: #FFFFFF
+	color: #FFFFFF;
+}
+
+@media(max-width:735px){
+	#contact .frame img{
+			height: 300px;
+			left: 20px;
+	}
+
+	#contact .frame::after{
+	  border-bottom: 200px solid #C4C4C4;
+	  border-right: 300px solid transparent;
+	}
+
+	@media(max-width:650px){}
+		#contact .frame img{
+				display: none;
+		}
+
+		#contact .frame form{
+				position: static;
+				margin: 0px auto;
+				float: none;
+		}
+
+		#contact .frame{
+			padding-top: 20px;
+		}
+
+		#contact .frame::after{
+		  border-bottom: none;
+		  border-right: none;
+			width: 100%;
+			height: 80px;
+			background-color: #C4C4C4
+		}
+	}
 }
