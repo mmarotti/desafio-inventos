@@ -35,3 +35,16 @@ export async function main(event, context) {
     return failure({ status: false });
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+$ npx aws-api-gateway-cli-test --username='admin@minions.com' --password='banana123!' --user-pool-id='us-east-2_ciR8PSm7C' --app-client-id='ikvoqnhpfnqra05pkm7qfcjnh' --cognito-region='us-east-2' --identity-pool-id='us-east-2:496b3d05-f87e-4004-a823-6de9307c2a20' --invoke-url='mj51zfu62a' --api-gateway-region='us-east-2' --path-template='/reservations' --method='POST' --body='{"content":"hello world","attachment":"hello.jpg"}'
