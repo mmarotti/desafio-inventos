@@ -3,6 +3,7 @@
 1. Helpers
 2. Main
 3. Minions
+4. Contact
 
 */
 
@@ -362,5 +363,115 @@ h2{
 		 		margin: 0 auto;
 		 }
 
+		 #minions .half-screen{
+			 transition: 0s;
+		 }
+
+		 #minions #minions-info .minion-show{
+			 transition: 0s;
+		 }
+
 	 }
+}
+
+/* 4. Contact */
+
+#contact{
+	height: 650px;
+	width: 100%;
+	box-sizing: border-box;;
+	padding: 65px 20px 0 20px;
+	margin-top: 80px;
+}
+
+#contact .frame::after{
+	content: "";
+	width: 0;
+  height: 0;
+  border-bottom: 200px solid #C4C4C4;
+  border-right: 450px solid transparent;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+#contact .frame img{
+	height: 450px;
+	position: absolute;
+	bottom: 20px;
+	left: 50px;
+	z-index: 1;
+}
+
+#contact .frame form{
+	padding: 10px 30px 30px 30px;
+	width: 300px;
+	background-color: #FFFFFF;
+	float: right;
+	margin: 40px 30px 0 0;
+}
+
+#contact .frame form .item{
+	margin-top: 20px;
+}
+
+#contact .frame form label{
+	font-family: "Rubik", sans-serif;
+	color: #5F5F5F;
+	font-weight: bold;
+}
+
+#contact .frame form input[type="text"], #contact .frame form input[type="email"], #contact .frame form input[type="tel"]{
+	border: 3px solid #C4C4C4;
+	height: 35px;
+	width: 100%;
+	margin-top: 5px;
+	padding: 5px 5px 5px 5px;
+	box-sizing: border-box;
+}
+
+#contact .frame form input[type="text"]:focus, #contact .frame form input[type="email"]:focus, #contact .frame form input[type="tel"]:focus{
+	border: 3px solid #F2D05B;
+	outline: none;
+}
+
+#contact .frame form button{
+	background: #5383A5;
+	font-family: "Rubik", sans-serif;
+	border: 3px solid #5383A5;
+	color: #FFFFFF;
+	font-size: 22px;
+	padding: 5px 30px 5px 30px;
+	margin-top: 20px;
+	font-weight: bold;
+}
+
+#contact .frame form button:hover{
+	background-color: transparent;
+	color: #5383A5;
+	transition: 0.5s;
+	cursor: pointer;
+}
+
+#contact .frame form .item.radio input[type="radio"]{
+	display: none;
+}
+
+
+#contact .frame form .item.radio .minion-radio{
+	padding: 10px;
+	color: #F2D05B;
+	border: 3px solid #F2D05B;
+	margin-top: 10px;
+	margin-right: 10px;
+	display: inline-table;
+	width: 100px;
+	text-align: center;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+#contact .frame form .item.radio #minion-1-radio:checked ~ .minion-radio[for="minion-1-radio"], #contact .frame form .item.radio #minion-2-radio:checked ~ .minion-radio[for="minion-2-radio"]{
+	background-color: #F2D05B;
+	color: #FFFFFF
 }
