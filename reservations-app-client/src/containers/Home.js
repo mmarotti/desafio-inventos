@@ -1,7 +1,59 @@
 import React, { Component } from "react";
+import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import LoaderButton from "../components/LoaderButton";
+import { API } from "aws-amplify";
+import config from "../config";
 import "./Home.css";
 
 export default class Home extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoading: null,
+      client_name: "",
+      minion: "",
+      email: "",
+      phone: "",
+    };
+  }
+
+  validateForm() {
+    return this.state.client_name.length > 0;
+  }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.id]: event.target.value
+    });
+  }
+
+  handleSubmit = async event => {
+    event.preventDefault();
+
+    this.setState({ isLoading: true });
+
+    try {
+      await this.createReservation({
+        client_name: this.state.client_name,
+        minion: this.state.minion,
+        email: this.state.email,
+        phone: this.state.phone
+      });
+      this.setState({ isLoading: false });
+    } catch (e) {
+      alert(e);
+      this.setState({ isLoading: false });
+    }
+  }
+
+  createReservation(reservation) {
+    return API.post("reservations", "/reservations", {
+      body: reservation
+    });
+  }
+
   render() {
     return (
       <div className="Home">
@@ -44,28 +96,46 @@ export default class Home extends Component {
   					<h2>gostou? reserve seu minion agora!</h2>
   					<div class="frame">
   						<img src="img/minion-2.png" alt="Minion correndo"/>
-  						<form id="contact-form">
-  							<div class="item">
-  								<label>Nome:</label><br/>
-  								<input type="text"/><br/>
-  							</div>
-  							<div class="item radio">
-  								<label>Escolha seu Minion:</label><br/>
-  								<input type="radio" name="minion" value="#1" id="minion-1-radio"/>
-  								<input type="radio" name="minion" value="#2" id="minion-2-radio"/>
-  								<label for="minion-1-radio" class="minion-radio">Minion #1</label>
-  								<label for="minion-2-radio" class="minion-radio">Minion #2</label>
-  							</div>
-  							<div class="item">
-  								<label>E-mail:</label><br/>
-  								<input type="email"/><br/>
-  							</div>
-  							<div class="item">
-  								<label>Telefone:</label><br/>
-  								<input type="tel"/>
-  							</div>
-  							<button type="button">Enviar</button>
-  						</form>
+              <form onSubmit={this.handleSubmit} id="contact-form">
+                  <FormGroup controlId="client_name" class="item">
+                    <FormControl
+                      onChange={this.handleChange}
+                      value={this.state.client_name}
+                      componentClass="textarea"
+                    />
+                  </FormGroup>
+                  <FormGroup controlId="minion" class="item">
+                    <FormControl
+                      onChange={this.handleChange}
+                      value={this.state.minion}
+                      componentClass="textarea"
+                    />
+                  </FormGroup>
+                  <FormGroup controlId="email" class="item">
+                    <FormControl
+                      onChange={this.handleChange}
+                      value={this.state.email}
+                      componentClass="textarea"
+                    />
+                  </FormGroup>
+                  <FormGroup controlId="phone" class="item">
+                    <FormControl
+                      onChange={this.handleChange}
+                      value={this.state.phone}
+                      componentClass="textarea"
+                    />
+                  </FormGroup>
+                  <LoaderButton
+                    block
+                    bsStyle="primary"
+                    bsSize="large"
+                    disabled={!this.validateForm()}
+                    type="submit"
+                    isLoading={this.state.isLoading}
+                    text="Create"
+                    loadingText="Creating…"
+                  />
+              </form>
   					</div>
   			</section>
 
