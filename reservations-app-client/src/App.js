@@ -46,11 +46,11 @@ class App extends Component {
     };
     return (
         !this.state.isAuthenticating &&
-        <div className="App container">
+        <div className="App">
         {this.state.isAuthenticated
             ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
             : <Fragment>
-                  <NavItem href="/logout">Signup</NavItem>
+                  <NavItem href="/signup">Signup</NavItem>
                   <NavItem href="/login">Login</NavItem>
               </Fragment>
           }
