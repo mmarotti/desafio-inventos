@@ -95,6 +95,10 @@ nav a:hover{
 	color: #DBAB47;
 }
 
+nav .glyphicon{
+	margin-left: 10px;
+}
+
 @media(max-width: 560px){
 	nav{
 		text-align: center;

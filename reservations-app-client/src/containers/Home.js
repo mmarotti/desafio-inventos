@@ -164,8 +164,8 @@ export default class Home extends Component {
                     disabled={!this.validateForm()}
                     type="submit"
                     isLoading={this.state.isLoading}
-                    text="Create"
-                    loadingText="Creating…"
+                    text="Reservar"
+                    loadingText="Reservando…"
                   />
               </form>
   					</div>

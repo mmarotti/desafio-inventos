@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import './App.css';
 import Routes from "./Routes";
 import { Link, withRouter } from "react-router-dom";
-import { Nav, Navbar, NavItem } from "react-bootstrap";
+import { Nav, Navbar, NavItem, Glyphicon } from "react-bootstrap";
 import { Auth } from "aws-amplify";
 
 class App extends Component {
@@ -49,7 +49,7 @@ class App extends Component {
         <div className="App">
         <nav>
           {this.state.isAuthenticated
-              ? <NavItem onClick={this.handleLogout} id="logout">Logout</NavItem>
+              ? <NavItem onClick={this.handleLogout} id="logout">Sair<Glyphicon glyph="log-out" /></NavItem>
               : <Fragment>
                     <NavItem href="/signup">Cadastre-se</NavItem>
                     <NavItem href="/login">Entrar</NavItem>

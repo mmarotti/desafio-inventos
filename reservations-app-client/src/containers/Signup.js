@@ -7,7 +7,7 @@ import {
 } from "react-bootstrap";
 import LoaderButton from "../components/LoaderButton";
 import { Auth } from "aws-amplify";
-import "./Signup.css";
+import "./Login.css";
 
 export default class Signup extends Component {
   constructor(props) {
@@ -80,67 +80,72 @@ export default class Signup extends Component {
 
   renderConfirmationForm() {
     return (
-      <form onSubmit={this.handleConfirmationSubmit}>
-        <FormGroup controlId="confirmationCode" bsSize="large">
-          <ControlLabel>Confirmation Code</ControlLabel>
-          <FormControl
-            autoFocus
-            type="tel"
-            value={this.state.confirmationCode}
-            onChange={this.handleChange}
+      <form onSubmit={this.handleConfirmationSubmit} class="out-form">
+        <h2>Por favor verifique o código em seu email</h2>
+        <div class="form-fields">
+          <FormGroup controlId="confirmationCode" bsSize="large">
+            <ControlLabel>Código de confirmação: </ControlLabel>
+            <FormControl
+              autoFocus
+              type="tel"
+              value={this.state.confirmationCode}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+          <LoaderButton
+            block
+            bsSize="large"
+            disabled={!this.validateConfirmationForm()}
+            type="submit"
+            isLoading={this.state.isLoading}
+            text="Verificar"
+            loadingText="Verificando…"
           />
-          <HelpBlock>Please check your email for the code.</HelpBlock>
-        </FormGroup>
-        <LoaderButton
-          block
-          bsSize="large"
-          disabled={!this.validateConfirmationForm()}
-          type="submit"
-          isLoading={this.state.isLoading}
-          text="Verify"
-          loadingText="Verifying…"
-        />
+        </div>
       </form>
     );
   }
 
   renderForm() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <FormGroup controlId="email" bsSize="large">
-          <ControlLabel>Email</ControlLabel>
-          <FormControl
-            autoFocus
-            type="email"
-            value={this.state.email}
-            onChange={this.handleChange}
+      <form onSubmit={this.handleSubmit} class="out-form">
+        <h2>Cadastre-se para ter acesso à nossa loja</h2>
+        <div class="form-fields">
+          <FormGroup controlId="email" bsSize="large">
+            <ControlLabel>E-mail:</ControlLabel>
+            <FormControl
+              autoFocus
+              type="email"
+              value={this.state.email}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+          <FormGroup controlId="password" bsSize="large">
+            <ControlLabel>Senha:</ControlLabel>
+            <FormControl
+              value={this.state.password}
+              onChange={this.handleChange}
+              type="password"
+            />
+          </FormGroup>
+          <FormGroup controlId="confirmPassword" bsSize="large">
+            <ControlLabel>Confirme sua senha:</ControlLabel>
+            <FormControl
+              value={this.state.confirmPassword}
+              onChange={this.handleChange}
+              type="password"
+            />
+          </FormGroup>
+          <LoaderButton
+            block
+            bsSize="large"
+            disabled={!this.validateForm()}
+            type="submit"
+            isLoading={this.state.isLoading}
+            text="Cadastrar"
+            loadingText="Cadastrando…"
           />
-        </FormGroup>
-        <FormGroup controlId="password" bsSize="large">
-          <ControlLabel>Password</ControlLabel>
-          <FormControl
-            value={this.state.password}
-            onChange={this.handleChange}
-            type="password"
-          />
-        </FormGroup>
-        <FormGroup controlId="confirmPassword" bsSize="large">
-          <ControlLabel>Confirm Password</ControlLabel>
-          <FormControl
-            value={this.state.confirmPassword}
-            onChange={this.handleChange}
-            type="password"
-          />
-        </FormGroup>
-        <LoaderButton
-          block
-          bsSize="large"
-          disabled={!this.validateForm()}
-          type="submit"
-          isLoading={this.state.isLoading}
-          text="Signup"
-          loadingText="Signing up…"
-        />
+        </div>
       </form>
     );
   }
