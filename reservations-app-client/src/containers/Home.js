@@ -29,6 +29,13 @@ export default class Home extends Component {
     });
   }
 
+  handleChangeRadio = event => {
+    this.setState({
+      minion: event.target.value
+    });
+  }
+
+
   handleSubmit = async event => {
     event.preventDefault();
 
@@ -97,48 +104,59 @@ export default class Home extends Component {
   					<div class="frame">
   						<img src="img/minion-2.png" alt="Minion correndo"/>
               <form onSubmit={this.handleSubmit} id="contact-form">
-                  <FormGroup controlId="client_name" class="item">
+                  <div class="form-group item">
+                    <ControlLabel>Nome:</ControlLabel>
                     <FormControl
                       onChange={this.handleChange}
                       value={this.state.client_name}
                       componentClass="input"
                       type="text"
+                      id="client_name"
                     />
-                  </FormGroup>
-                  <FormGroup controlId="minion" class="item radio">
+                  </div>
+                  <div class="form-group item radio">
+                    <ControlLabel>Escolha seu Minion:</ControlLabel>
                     <FormControl
                       type="radio"
                       label="first radio"
                       name="formHorizontalRadios"
                       checked={this.state.minion === "1"}
-                      onChange={this.handleChange}
+                      onChange={this.handleChangeRadio}
                       value='1'
+                      id="minion-1-radio"
                     />
                     <FormControl
                       type="radio"
                       label="second radio"
                       name="formHorizontalRadios"
                       checked={this.state.minion === "2"}
-                      onChange={this.handleChange}
+                      onChange={this.handleChangeRadio}
                       value='2'
+                      id="minion-2-radio"
                     />
-                  </FormGroup>
-                  <FormGroup controlId="email" class="item">
+                    <label for="minion-1-radio" class="minion-radio">Minion #1</label>
+								    <label for="minion-2-radio" class="minion-radio">Minion #2</label>
+                  </div>
+                  <div class="form-group item">
+                    <ControlLabel>E-mail:</ControlLabel>
                     <FormControl
                       onChange={this.handleChange}
                       value={this.state.email}
                       componentClass="input"
                       type="email"
+                      id="email"
                     />
-                  </FormGroup>
-                  <FormGroup controlId="phone" class="item">
+                  </div>
+                  <div class="form-group item">
+                    <ControlLabel>Telefone:</ControlLabel>
                     <FormControl
                       onChange={this.handleChange}
                       value={this.state.phone}
                       componentClass="input"
                       type="tel"
+                      id="phone"
                     />
-                  </FormGroup>
+                  </div>
                   <LoaderButton
                     block
                     bsStyle="primary"

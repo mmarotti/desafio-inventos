@@ -1,7 +1,8 @@
 /*
 
 1. Helpers
-2. Footer
+2. Navbar
+3. Footer
 
  */
 
@@ -67,7 +68,40 @@ body, html{
 	height: 100%;
 }
 
-/* 2. Footer */
+/* 2. Navbar */
+
+nav{
+	max-width: 1000px;
+	display: block;
+	margin: 0 auto;
+	text-align: right;
+	padding-top: 40px;
+	padding-right: 20px;
+}
+
+nav li{
+	list-style: none;
+	display: inline-block;
+	margin: 10px;
+}
+nav a{
+	text-decoration: none;
+	color: #F2D05B;
+	font-family: "Rubik", sans-serif;
+	font-weight: bold;
+}
+
+nav a:hover{
+	color: #DBAB47;
+}
+
+@media(max-width: 560px){
+	nav{
+		text-align: center;
+	}
+}
+
+/* 3. Footer */
 
 footer{
 	background-color: #5F5F5F;
@@ -88,6 +122,6 @@ footer p{
 
 @media(max-width: 650px){
 	footer{
-		margin-top: 140px;
+		margin-top: 200px;
 	}
 }

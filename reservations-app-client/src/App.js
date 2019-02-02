@@ -47,13 +47,15 @@ class App extends Component {
     return (
         !this.state.isAuthenticating &&
         <div className="App">
-        {this.state.isAuthenticated
-            ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
-            : <Fragment>
-                  <NavItem href="/signup">Signup</NavItem>
-                  <NavItem href="/login">Login</NavItem>
-              </Fragment>
-          }
+        <nav>
+          {this.state.isAuthenticated
+              ? <NavItem onClick={this.handleLogout} id="logout">Logout</NavItem>
+              : <Fragment>
+                    <NavItem href="/signup">Cadastre-se</NavItem>
+                    <NavItem href="/login">Entrar</NavItem>
+                </Fragment>
+            }
+        </nav>
 
         <Routes childProps={childProps} />
         <footer>
