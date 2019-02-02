@@ -20,7 +20,7 @@ export default class Home extends Component {
   }
 
   validateForm() {
-    return this.state.client_name.length > 0;
+    return true;
   }
 
   handleChange = event => {
@@ -101,28 +101,42 @@ export default class Home extends Component {
                     <FormControl
                       onChange={this.handleChange}
                       value={this.state.client_name}
-                      componentClass="textarea"
+                      componentClass="input"
+                      type="text"
                     />
                   </FormGroup>
-                  <FormGroup controlId="minion" class="item">
+                  <FormGroup controlId="minion" class="item radio">
                     <FormControl
+                      type="radio"
+                      label="first radio"
+                      name="formHorizontalRadios"
+                      checked={this.state.minion === "1"}
                       onChange={this.handleChange}
-                      value={this.state.minion}
-                      componentClass="textarea"
+                      value='1'
+                    />
+                    <FormControl
+                      type="radio"
+                      label="second radio"
+                      name="formHorizontalRadios"
+                      checked={this.state.minion === "2"}
+                      onChange={this.handleChange}
+                      value='2'
                     />
                   </FormGroup>
                   <FormGroup controlId="email" class="item">
                     <FormControl
                       onChange={this.handleChange}
                       value={this.state.email}
-                      componentClass="textarea"
+                      componentClass="input"
+                      type="email"
                     />
                   </FormGroup>
                   <FormGroup controlId="phone" class="item">
                     <FormControl
                       onChange={this.handleChange}
                       value={this.state.phone}
-                      componentClass="textarea"
+                      componentClass="input"
+                      type="tel"
                     />
                   </FormGroup>
                   <LoaderButton

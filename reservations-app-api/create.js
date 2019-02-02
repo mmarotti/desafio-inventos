@@ -9,7 +9,7 @@ export async function main(event, context) {
     Item: {
       userId: event.requestContext.identity.cognitoIdentityId,
       reservationId: uuid.v1(),
-      client_name: data.name,
+      client_name: data.client_name,
       email: data.email,
       phone: data.phone,
       minion: data.minion,
