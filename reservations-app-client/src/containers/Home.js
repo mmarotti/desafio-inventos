@@ -35,6 +35,21 @@ export default class Home extends Component {
     });
   }
 
+  sendEmail(reservation){
+    API.post("reservations", "/email/send", {
+      body: {
+        email: 'matheusmarotti@id.uff.br',
+        name: 'Loja dos Minions',
+        content: reservation
+      }
+    }).then(response => {
+      alert("Email enviado!");
+    }).catch(error => {
+      this.setState({ isLoading: false });
+      alert(error);
+    });
+  }
+
 
   handleSubmit = async event => {
     event.preventDefault();
@@ -48,6 +63,13 @@ export default class Home extends Component {
         email: this.state.email,
         phone: this.state.phone
       });
+      const reservation = {
+        client_name: this.state.name,
+        minion: this.state.minion,
+        email: this.state.email,
+        phone: this.state.phone
+      }
+      // this.sendEmail(reservation);
       this.setState({ isLoading: false });
     } catch (e) {
       alert(e);
