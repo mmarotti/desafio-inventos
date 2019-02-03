@@ -51,20 +51,22 @@ export default class Home extends Component {
     });
   }
 
-  sendEmail(reservation){
+  sendEmail(){
+    this.setState({ isLoading: true });
+
     API.post("reservations", "/email/send", {
       body: {
-        email: 'matheusmarotti@id.uff.br',
-        name: 'Loja dos Minions',
-        content: reservation
+        name: 'Minion Store',
       }
     }).then(response => {
       alert("Email enviado!");
     }).catch(error => {
       this.setState({ isLoading: false });
-      alert(error);
+      alert(error.response);
     });
+
   }
+
 
 
   handleSubmit = async event => {
@@ -85,7 +87,7 @@ export default class Home extends Component {
         email: this.state.email,
         phone: this.state.phone
       }
-      // this.sendEmail(reservation);
+      this.sendEmail(reservation);
       swal("Parabéns!", "Sua reserva foi realizada com sucesso!", "success");
       this.setState({ isLoading: false });
     } catch (e) {

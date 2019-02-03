@@ -9,7 +9,6 @@ plugins:
 # serverless-webpack configuration
 # Enable auto-packing of external modules
 custom:
-  secrets: ${file(secrets.json)}
   webpack:
     webpackConfig: ./webpack.config.js
     includeModules: true
@@ -18,10 +17,10 @@ provider:
   name: aws
   runtime: nodejs8.10
   stage: prod
-  region: us-east-2
+  region: us-east-1
   environment:
-    NODE_ENV: prod
-    EMAIL: elmarotti@gmail.com
+    NODE_ENV: "prod"
+    EMAIL: "elmarotti@gmail.com"
     DOMAIN: "*"
   # 'iamRoleStatements' defines the permission policy for the Lambda function.
   # In this case Lambda functions are granted with permissions to access DynamoDB.
@@ -35,7 +34,7 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:us-east-2:*:*"
+      Resource: "arn:aws:dynamodb:us-east-1:*:*"
 
     - Effect: "Allow"
       Action:
@@ -106,10 +105,9 @@ functions:
           authorizer: aws_iam
 
   send:
-    handler: handler.main
+    handler: handler.send
     events:
       - http:
           path: email/send
           method: post
           cors: true
-          authorizer: aws_iam
