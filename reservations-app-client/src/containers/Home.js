@@ -51,12 +51,15 @@ export default class Home extends Component {
     });
   }
 
-  sendEmail(){
+  sendEmail(client_name, email, minion, phone){
     this.setState({ isLoading: true });
 
     API.post("reservations", "/email/send", {
       body: {
-        name: 'Minion Store',
+        client_name: client_name,
+        email: email,
+        minion: minion,
+        phone: phone
       }
     }).then(response => {
       alert("Email enviado!");
@@ -66,8 +69,6 @@ export default class Home extends Component {
     });
 
   }
-
-
 
   handleSubmit = async event => {
     event.preventDefault();
@@ -81,13 +82,7 @@ export default class Home extends Component {
         email: this.state.email,
         phone: this.state.phone
       });
-      const reservation = {
-        client_name: this.state.name,
-        minion: this.state.minion,
-        email: this.state.email,
-        phone: this.state.phone
-      }
-      this.sendEmail(reservation);
+      this.sendEmail(this.state.client_name,this.state.email, this.state.minion, this.state.phone);
       swal("Parabéns!", "Sua reserva foi realizada com sucesso!", "success");
       this.setState({ isLoading: false });
     } catch (e) {

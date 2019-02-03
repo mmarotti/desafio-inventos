@@ -28,12 +28,9 @@ function generateError (code, err) {
   }
 }
 
-function generateEmailParams () {
-  // const { email, name, content } = JSON.parse(body)
-  // console.log(email, name, content)
-  // if (!(email && name && content)) {
-  //   throw new Error('Missing parameters! Make sure to add parameters \'email\', \'name\', \'content\'.')
-  // }
+function generateEmailParams (body) {
+
+  const { client_name, email, minion, phone } = JSON.parse(body)
 
   return {
     Source: myEmail,
@@ -43,12 +40,12 @@ function generateEmailParams () {
       Body: {
         Text: {
           Charset: 'UTF-8',
-          Data: 'Fala tu meno'
+          Data: `Nova reserva do minion ${minion} pelo cliente ${client_name} - ${email} - ${phone}`
         }
       },
       Subject: {
         Charset: 'UTF-8',
-        Data: `Um pedido!`
+        Data: `Novo pedido de ${email}`
       }
     }
   }
@@ -56,7 +53,7 @@ function generateEmailParams () {
 
 module.exports.send = async (event) => {
   try {
-    const emailParams = generateEmailParams()
+    const emailParams = generateEmailParams(event.body)
     const data = await ses.sendEmail(emailParams).promise()
     return generateResponse(200, data)
   } catch (err) {
