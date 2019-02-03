@@ -4,6 +4,7 @@ import LoaderButton from "../components/LoaderButton";
 import { API } from "aws-amplify";
 import config from "../config";
 import "./Home.css";
+import swal from 'sweetalert';
 
 export default class Home extends Component {
 
@@ -20,7 +21,22 @@ export default class Home extends Component {
   }
 
   validateForm() {
-    return true;
+    return (this.state.client_name == "" || this.state.email == "" || this.state.minion == "" || this.state.phone.length <= 9)
+  }
+
+  formErrors(){
+    if(this.state.client_name == ""){
+      swal("Oops!", "Nome não pode estar vazio.", "error");
+    }
+    else if(this.state.email == ""){
+      swal("Oops!", "Email não pode estar vazio", "error");
+    }
+    else if(this.state.minion == ""){
+      swal("Oops!", "Você deve escolher um minion.", "error");
+    }
+    else if(this.state.phone == ""){
+      swal("Oops!", "Telefone não pode estar vazio", "error");
+    }
   }
 
   handleChange = event => {
@@ -70,6 +86,7 @@ export default class Home extends Component {
         phone: this.state.phone
       }
       // this.sendEmail(reservation);
+      swal("Parabéns!", "Sua reserva foi realizada com sucesso!", "success");
       this.setState({ isLoading: false });
     } catch (e) {
       alert(e);
@@ -183,7 +200,7 @@ export default class Home extends Component {
                     block
                     bsStyle="primary"
                     bsSize="large"
-                    disabled={!this.validateForm()}
+                    disabled={this.validateForm()}
                     type="submit"
                     isLoading={this.state.isLoading}
                     text="Reservar"

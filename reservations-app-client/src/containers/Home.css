@@ -392,7 +392,6 @@ h2{
 	background-color: transparent;
 	color: #5383A5;
 	transition: 0.5s;
-	cursor: pointer;
 }
 
 #contact .frame form .item.radio input[type="radio"]{
