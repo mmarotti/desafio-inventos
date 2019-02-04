@@ -7,6 +7,7 @@ import {
 } from "react-bootstrap";
 import LoaderButton from "../components/LoaderButton";
 import { Auth } from "aws-amplify";
+import Tooltip from 'react-tooltip-lite';
 import "./Login.css";
 
 export default class Signup extends Component {
@@ -62,7 +63,12 @@ export default class Signup extends Component {
   }
 
   handleConfirmationSubmit = async event => {
-    event.preventDefault();
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    this.setState({ validated: true });
 
     this.setState({ isLoading: true });
 
@@ -122,11 +128,13 @@ export default class Signup extends Component {
           </FormGroup>
           <FormGroup controlId="password" bsSize="large">
             <ControlLabel>Senha:</ControlLabel>
-            <FormControl
-              value={this.state.password}
-              onChange={this.handleChange}
-              type="password"
-            />
+            <Tooltip content="Sua senha deve conter 8 caracteres, entre eles: letra minúscula, número e caractere especial" direction="right" background="#C4C4C4">
+              <FormControl
+                value={this.state.password}
+                onChange={this.handleChange}
+                type="password"
+              />
+            </Tooltip>
           </FormGroup>
           <FormGroup controlId="confirmPassword" bsSize="large">
             <ControlLabel>Confirme sua senha:</ControlLabel>

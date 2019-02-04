@@ -57,6 +57,12 @@
   border-color: #5383A5;
 }
 
+.react-tooltip-lite{
+  font-family: "Rubik", sans-serif;
+  font-weight: bold;
+  color: #FFFFFF;
+  font-size: 16px;
+}
 
 @media(max-width: 450px){
   .out-form{
