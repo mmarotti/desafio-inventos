@@ -453,6 +453,10 @@ h2{
 			background-color: #C4C4C4;
 		}
 
+    #contact .frame form button{
+      font-size: 18px;
+    }
+
     @media(max-width:350px){
       #contact .frame form{
           width: 240px;
