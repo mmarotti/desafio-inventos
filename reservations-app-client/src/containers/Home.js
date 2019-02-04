@@ -24,6 +24,13 @@ export default class Home extends Component {
     return (this.state.client_name == "" || this.state.email == "" || this.state.minion == "" || this.state.phone.length <= 9)
   }
 
+  tel_mask(){
+    if(document.getElementById("phone") != null)
+      alert(document.getElementById("phone").value);          //Remove tudo o que não é dígito
+      // document.getElementById("phone").value.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+      // document.getElementById("phone").value.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
+  }
+
   formErrors(){
     if(this.state.client_name == ""){
       swal("Oops!", "Nome não pode estar vazio.", "error");
@@ -41,7 +48,7 @@ export default class Home extends Component {
 
   handleChange = event => {
     this.setState({
-      [event.target.id]: event.target.value
+      [event.target.id]: event.target.value,
     });
   }
 
@@ -186,11 +193,14 @@ export default class Home extends Component {
                   <div class="form-group item">
                     <ControlLabel>Telefone:</ControlLabel>
                     <FormControl
+                      inputRef="phone"
                       onChange={this.handleChange}
                       value={this.state.phone}
                       componentClass="input"
                       type="tel"
                       id="phone"
+                      pattern="\([0-9]{2}\)[0-9]{4,6}-[0-9]{3,4}$"
+                      title="Insira telefone no formato (xx)xxxxx-xxxx"
                     />
                   </div>
                   <LoaderButton
