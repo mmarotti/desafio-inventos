@@ -21,14 +21,7 @@ export default class Home extends Component {
   }
 
   validateForm() {
-    return (this.state.client_name == "" || this.state.email == "" || this.state.minion == "" || this.state.phone.length <= 9)
-  }
-
-  tel_mask(){
-    if(document.getElementById("phone") != null)
-      alert(document.getElementById("phone").value);          //Remove tudo o que não é dígito
-      // document.getElementById("phone").value.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
-      // document.getElementById("phone").value.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
+    return (this.state.client_name == "" || this.state.email == "" || this.state.minion == "" || this.state.phone.length < 8)
   }
 
   formErrors(){
@@ -69,7 +62,7 @@ export default class Home extends Component {
         phone: phone
       }
     }).then(response => {
-      alert("Email enviado!");
+      swal("Parabéns!", "Sua reserva foi realizada com sucesso!", "success");
     }).catch(error => {
       this.setState({ isLoading: false });
       alert(error.response);
@@ -90,7 +83,6 @@ export default class Home extends Component {
         phone: this.state.phone
       });
       this.sendEmail(this.state.client_name,this.state.email, this.state.minion, this.state.phone);
-      swal("Parabéns!", "Sua reserva foi realizada com sucesso!", "success");
       this.setState({ isLoading: false });
     } catch (e) {
       alert(e);
@@ -199,8 +191,8 @@ export default class Home extends Component {
                       componentClass="input"
                       type="tel"
                       id="phone"
-                      pattern="\([0-9]{2}\)[0-9]{4,6}-[0-9]{3,4}$"
-                      title="Insira telefone no formato (xx)xxxxx-xxxx"
+                      pattern="[0-9]{8-11}"
+                      title="Deve conter no mínimo 8 números"
                     />
                   </div>
                   <LoaderButton

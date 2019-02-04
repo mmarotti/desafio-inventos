@@ -417,6 +417,32 @@ h2{
 	color: #FFFFFF;
 }
 
+.swal-modal{
+  border-radius: 0px;
+}
+
+.swal-modal{
+  font-family: "Rubik", sans-serif;
+  text-align: center;
+}
+
+.swal-modal .swal-text{
+  text-align: center;
+}
+
+.swal-modal button{
+  border-radius: 0px;
+  background-color: #5383A5;
+  outline: none;
+  border: 3px solid #5383A5;
+
+}
+
+.swal-modal button:hover{
+  background: transparent !important;
+  color: #5383A5;
+}
+
 @media(max-width:735px){
 	#contact .frame img{
 			height: 300px;

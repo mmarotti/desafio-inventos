@@ -1,6 +1,6 @@
 const aws = require('aws-sdk')
 const ses = new aws.SES()
-const myEmail = "elmarotti@gmail.com"
+const myEmail = "matheusmarotti@id.uff.br"
 const myDomain = "*"
 
 function generateResponse (code, payload) {
@@ -33,9 +33,9 @@ function generateEmailParams (body) {
   const { client_name, email, minion, phone } = JSON.parse(body)
 
   return {
-    Source: myEmail,
-    Destination: { ToAddresses: [myEmail] },
-    ReplyToAddresses: ["matheusmarotti@id.uff.br"],
+    Source: "elmarotti@gmail.com",
+    Destination: { ToAddresses: [myEmail, "elmarotti@gmail.com"] },
+    ReplyToAddresses: ["elmarotti@gmail.com"],
     Message: {
       Body: {
         Text: {
