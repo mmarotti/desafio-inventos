@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { API } from "aws-amplify";
-import { PageHeader, ListGroup, ListGroupItem, Glyphicon } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
-import config from "../config";
+import { ListGroup, ListGroupItem, Glyphicon } from "react-bootstrap";
 import "./Reservations.css";
 
 export default class Reservations extends Component {
@@ -53,7 +51,7 @@ export default class Reservations extends Component {
           <Glyphicon glyph="refresh" />
         </div>
       );
-    } else if(this.state.reservations.length != 0 && !this.state.isLoading){
+    } else if(this.state.reservations.length !== 0 && !this.state.isLoading){
        return (
          <div class="reservations">
            <h2>suas reservas</h2>

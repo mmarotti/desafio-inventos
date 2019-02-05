@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
 import './App.css';
 import Routes from "./Routes";
-import { Link, withRouter } from "react-router-dom";
-import { Nav, Navbar, NavItem, Glyphicon } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
+import { NavItem, Glyphicon } from "react-bootstrap";
 import { Auth } from "aws-amplify";
 
 class App extends Component {
