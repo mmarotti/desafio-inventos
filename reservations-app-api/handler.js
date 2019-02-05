@@ -1,6 +1,6 @@
 const aws = require('aws-sdk')
 const ses = new aws.SES()
-const myEmail = "matheusmarotti@id.uff.br"
+const myEmail = "rayssa@inventosdigitais.com.br"
 const myDomain = "*"
 
 function generateResponse (code, payload) {
