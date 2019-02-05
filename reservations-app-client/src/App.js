@@ -49,7 +49,11 @@ class App extends Component {
         <div className="App">
         <nav>
           {this.state.isAuthenticated
-              ? <NavItem onClick={this.handleLogout} id="logout">Sair<Glyphicon glyph="log-out" /></NavItem>
+              ? <Fragment>
+                  <NavItem href="/">Home</NavItem>
+                  <NavItem href="/reservas">Suas reservas</NavItem>
+                  <NavItem onClick={this.handleLogout} id="logout">Sair<Glyphicon glyph="log-out" /></NavItem>
+                </Fragment>
               : <Fragment>
                     <NavItem href="/signup">Cadastre-se</NavItem>
                     <NavItem href="/login">Entrar</NavItem>
