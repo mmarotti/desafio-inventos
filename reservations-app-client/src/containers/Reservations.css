@@ -1,0 +1,10 @@
+
+#reservations .reservations{
+  max-width: 1000px;
+  margin: 0 auto;
+  display: block;
+}
+
+#reservations .reservations a {
+  color: #666;
+}
